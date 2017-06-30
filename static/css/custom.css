@@ -1,0 +1,21 @@
+.jumbotron {
+	background-image: url("/static/images/jumbotron_2.jpg");
+	height: 120px;
+	background-size: contain;
+	background-repeat: no-repeat;
+    background-color: #ffffff;
+}
+
+footer {
+ 	background-image: url("/static/images/footer.jpg");
+ 	height: 360px;
+ 	background-size: contain;
+ 	background-repeat: no-repeat;
+
+}
+
+.container {
+	background-color: #e2e2e2;
+	padding:0px;
+
+}
