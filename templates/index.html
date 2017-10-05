@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Feedback form</title>
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/custom.css" rel="stylesheet">
 
@@ -19,102 +19,55 @@
 
     <div class = "container">
 
-    		
-
-		<form class="form-horizontal" action="/addrecord">
+		<form class="form-horizontal" method="POST" action="/addrecord">
 
 			<div class="form-group">
-			  <label class="col-sm-4 control-label">Дата</label>
+			  <label for="feedback-title" class="col-sm-4 control-label">Feedback for:</label>
 			  <div class="col-sm-4">
-			   <input type="date" class="form-control" id="date" placeholder="Дата" name="date" required >
+			  <select class="form-control" id="feedback_title" name="feedback_title" required>
+				<option disabled selected hidden value="">--Select--</option>
+				{%for l in feedback_title%}
+						<option>{{l}}</option>
+				{%endfor%}
+			  </select>
+			</div>
+			</div>
+
+			<div class="form-group">
+			  <label class="col-sm-4 control-label">Date</label>
+			  <div class="col-sm-4">
+			   <input type="date" class="form-control" id="date" placeholder="Date" name="date" required >
 			  </div>
 			 </div>
 
 
 			 <div class="form-group">
-			  <label class="col-sm-4 control-label">Oneviewid</label>
+			  <label class="col-sm-4 control-label">Name</label>
 			  <div class="col-sm-4">
-			   <input class="form-control" id="oneviewid" name="oneviewid" pattern="[0-9]{8}" placeholder="Oneviewid" required autocomplete="off">
+			   <input class="form-control" id="name" name="name" required>
 			  </div>
 			 </div>
 			 
 			 <div class="form-group">
-			  <label for="shift" class="col-sm-4 control-label">Смена</label>
-			  <div class="col-sm-4">
-				  <select class="form-control" id="shift" name="shift" required>
-					<option disabled selected hidden value="">--Выбрать--</option>
-					<option>Дневная</option>
-					<option>Ночная</option>
-					<option>Офис</option>
-				  </select>
-				</div>
-			</div>
-
-
-			 <div class="form-group">
-			  <label for="depatment" class="col-sm-4 control-label">Отдел</label>
+			  <label for="depatment" class="col-sm-4 control-label">Department</label>
 			  <div class="col-sm-4">
 			  <select class="form-control" id="department" name="department" required>
-				<option disabled selected hidden value="">--Выбрать--</option>
-				<option>SMD</option>
-				<option>PMD</option>
-				<option>FMD</option>
-				<option>ENG</option>
-				<option>QA</option>
-				<option>LOG</option>
-				<option>MOB1</option>
-				<option>MOB2</option>
+				<option disabled selected hidden value="">--Select--</option>
+				{%for l in department%}
+						<option>{{l}}</option>
+				{%endfor%}
 			  </select>
 			</div>
 			</div>
 
-
 			<div class="form-group">
-			  <label for="area" class="col-sm-4 control-label">Участок</label>
+			  <label for="question1" class="col-sm-4 control-label">Question 1</label>
 			  <div class="col-sm-4">
-			   <input type="text" class="form-control" id="area" name="area" placeholder="Участок" required autocomplete="off">
-			  </div>
-			 </div>
-
-
-
-			<div class="form-group">
-			  <label for="employee_exam" class="col-sm-4 control-label">Наблюдаемый сотрудник</label>
-			  <div class="col-sm-4">
-				  <select class="form-control" id="employee_exam" name="employee_exam" required>
-					<option disabled selected hidden value="">--Выбрать--</option>
-					<option>Сотрудник УЗБАТ</option>
-					<option>Контрактная организация</option>
-				  </select>
-				</div>
-			</div>
-
-
-			<div class="form-group">
-			  <label for="activity" class="col-sm-4 control-label">Обозреваемая активность</label>
-			  <div class="col-sm-4">
-			  <select class="form-control" id="activity" name="activity" required>
-				<option disabled selected hidden value="">--Выбрать--</option>
-				<option>Производство(обычная работа)</option>
-				<option>Техобслуживание</option>
-				<option>Транспортировка</option>
-				<option>Загрузка</option>
-				<option>Выгрузка</option>
-				<option>Чистка</option>
-				<option>Работа на высоте</option>
-			  </select>
-			</div>
-			</div>	
-
-
-			<div class="form-group">
-			  <label for="attention_work" class="col-sm-4 control-label">Внимание на работе</label>
-			  <div class="col-sm-4">
-				  <select class="form-control" id="attention_work" name="attention_work" required>
-					<option disabled selected hidden value="">--Выбрать--</option>
-					<option>Опасно</option>
-					<option>Безопасно</option>
-					<option>Не применимо</option>
+				  <select class="form-control" id="question1" name="question1" required>
+					<option disabled selected hidden value="">--Select--</option>
+					{%for l in checklist%}
+						<option>{{l}}</option>
+					{%endfor%}
 				  </select>
 				</div>
 			</div>
@@ -122,13 +75,13 @@
 
 
 			<div class="form-group">
-			  <label for="attention_road" class="col-sm-4 control-label">Внимание на дороге</label>
+			  <label for="question2" class="col-sm-4 control-label">Question2</label>
 			  <div class="col-sm-4">
-				  <select class="form-control" id="attention_road" name="attention_road" required>
-					<option disabled selected hidden value="">--Выбрать--</option>
-					<option>Опасно</option>
-					<option>Безопасно</option>
-					<option>Не применимо</option>
+				  <select class="form-control" id="question2" name="question2" required>
+					<option disabled selected hidden value="">--Select--</option>
+					{%for l in checklist%}
+						<option>{{l}}</option>
+					{%endfor%}
 				  </select>
 				</div>
 			</div>
@@ -137,81 +90,19 @@
 
 
 			<div class="form-group">
-			  <label for="appropriate_tools" class="col-sm-4 control-label">Использование правильных инструментов</label>
+			  <label for="question3" class="col-sm-4 control-label">Question3</label>
 			  <div class="col-sm-4">
-				  <select class="form-control" id="appropriate_tools" name="appropriate_tools" required>
-					<option disabled selected hidden value="">--Выбрать--</option>
-					<option>Опасно</option>
-					<option>Безопасно</option>
-					<option>Не применимо</option>
+				  <select class="form-control" id="question3" name="question3" required>
+					<option disabled selected hidden value="">--Select--</option>
+					{%for l in checklist%}
+						<option>{{l}}</option>
+					{%endfor%}
 				  </select>
 				</div>
 			</div>
 
-
-
-
 			<div class="form-group">
-			  <label for="tools_is_ok" class="col-sm-4 control-label">Используемые инструменты в исправности</label>
-			  <div class="col-sm-4">
-				  <select class="form-control" id="tools_is_ok" name="tools_is_ok" required>
-					<option disabled selected hidden value="">--Выбрать--</option>
-					<option>Опасно</option>
-					<option>Безопасно</option>
-					<option>Не применимо</option>
-				  </select>
-				</div>
-			</div>
-
-
-
-
-			<div class="form-group">
-			  <label for="ppe" class="col-sm-4 control-label">Использование необходимых СИЗ</label>
-			  <div class="col-sm-4">
-				  <select class="form-control" id="ppe" name="ppe" required>
-					<option disabled selected hidden value="">--Выбрать--</option>
-					<option>Опасно</option>
-					<option>Безопасно</option>
-					<option>Не применимо</option>
-				  </select>
-				</div>
-			</div>
-
-
-
-
-			<div class="form-group">
-			  <label for="ppe_special" class="col-sm-4 control-label">Использование необходимых СИЗ для спецработ</label>
-			  <div class="col-sm-4">
-				  <select class="form-control" id="ppe_special" name="ppe_special" required>
-					<option disabled selected hidden value="">--Выбрать--</option>
-					<option>Опасно</option>
-					<option>Безопасно</option>
-					<option>Не применимо</option>
-				  </select>
-				</div>
-			</div>
-
-
-
-
-			<div class="form-group">
-			  <label for="capture" class="col-sm-4 control-label">Избегать захвата частей тела</label>
-			  <div class="col-sm-4">
-				  <select class="form-control" id="capture" name="capture" required>
-					<option disabled selected hidden value="">--Выбрать--</option>
-					<option>Опасно</option>
-					<option>Безопасно</option>
-					<option>Не применимо</option>
-				  </select>
-				</div>
-			</div>
-
-
-
-			<div class="form-group">
-			  <label for="comment" class="col-sm-4 control-label">Комментарии</label>
+			  <label for="comment" class="col-sm-4 control-label">Comments</label>
 			  <div class="col-sm-4">
 			  <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
 			</div>
@@ -221,7 +112,7 @@
 			 
 			 <div class="form-group">
 			  <div class="col-sm-offset-3 col-sm-9">
-			   <button type="submit" class="btn btn-success">Отправить</button>
+			   <button type="submit" class="btn btn-success">Submit</button>
 			  </div>
 			 </div>
 		</form>
